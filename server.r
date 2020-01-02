@@ -2,27 +2,22 @@ library(ggplot2)
 library(jsonlite)
 library(RColorBrewer)
 library(mapproj)
-library(treemapify)
-library(tidyverse)
 
-##################################################################
+
+#1 POBRANIE DANYCH I PRZETWORZENIE ICH
 
 json_file <- 'https://datahub.io/JohnSnowLabs/country-and-continent-codes-list/datapackage.json'
 json_data <- fromJSON(paste(readLines(json_file), collapse=""))
 
-# get list of all resources:
-#print(json_data$resources$name)
 
-# print all tabular data(if exists any)
 for(i in 1:length(json_data$resources$datahub$type)){
   if(json_data$resources$datahub$type[i]=='derived/csv'){
     path_to_file = json_data$resources$path[i]
     data_countries_codes <- read.csv(url(path_to_file))
-    #print(data_countries_codes)
+
   }
 }
 
-##################################################################
 wd <-getwd()
 
 data_read=read.csv(paste(wd,"/global_power_plant_database.csv", sep=""), header = TRUE, sep = ",")
@@ -36,7 +31,7 @@ data <- data[!(is.na(data$continent_name) | data$continent_name == ""), ]
 
 data$estimated_generation_gwh_cleaned <- str_sub(data$estimated_generation_gwh, end=-4)
 
-###################################################################
+#2 WYKRESY
 
 function(input, output) {
   output$plot1 <- renderPlot({

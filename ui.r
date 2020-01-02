@@ -112,11 +112,9 @@ dashboardPage(
  
 
     tabItem(tabName = 'sources',
-            fluidRow(
-              
-              column(12,
-                     h4("Developer: Maks Sedzielski, 102207"),
-                     ))
+          mainPanel(h1(strong("Developer: Maks Sedzielski, 102207"), align="center"), 
+                    h4("http://datasets.wri.org/dataset/globalpowerplantdatabase", align="center"),
+                    h4("https://datahub.io/JohnSnowLabs/country-and-continent-codes-list/datapackage.json", align= "center"))
     )            
             )
       )
