@@ -20,10 +20,7 @@ dashboardPage(
                     value = FALSE),
              selectInput("bins", "Number of bins (plot n. 5):", 
                          choices=c(10, 20, 30, 40, 50),
-                         selected=30),
-    selectInput("scale", "Number of bins (plot n. 7):", 
-                choices=c(5000, 10000, 25000, 50000, 100000),
-                selected=10000)
+                         selected=30)
     ),
     
 

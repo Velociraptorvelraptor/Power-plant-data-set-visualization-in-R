@@ -1,0 +1,12 @@
+name: power_plant_visualization
+title: power_plant_visualization
+username:
+account: velociraptor
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1625405
+bundleId: 2702344
+url: https://velociraptor.shinyapps.io/power_plant_visualization/
+when: 1577980033.60946
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,6 +1,7 @@
 library(ggplot2)
 library(jsonlite)
 library(RColorBrewer)
+library(lattice)
 library(mapproj)
 
 
@@ -29,7 +30,6 @@ data$continent_code <- data_countries_codes$Continent_Code[match(data$country,da
 data <- data[!(is.na(data$country) | data$country == ""), ]
 data <- data[!(is.na(data$continent_name) | data$continent_name == ""), ]
 
-data$estimated_generation_gwh_cleaned <- str_sub(data$estimated_generation_gwh, end=-4)
 
 #2 WYKRESY
 
@@ -159,16 +159,16 @@ function(input, output) {
     output$plot10 <- renderPlot({
      ggplot(data=data, aes(x=data$primary_fuel, y=data$estimated_generation_gwh))+
       geom_boxplot(aes(fill=factor(data$continent_name))) + 
-        theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
         labs(title="Box plot of estimated energy generation [GWh] by primary fuel and continents",
+             subtitle="Y axis is provided in logarytmic scale",
              x="Primary fuel",
-             y="Estimated energy generation [GWh]",
+             y="Logarytmic scale, estimated energy generation [GWh]",
              fill="Continent")+
-        scale_y_continuous(limits=c(0, as.numeric(input$scale)))+
         theme(plot.title = element_text(size=28,face="bold"),
               axis.title=element_text(size=20), 
               axis.text.x = element_text( size=14), 
-              axis.text.y = element_text( size=18))
+              axis.text.y = element_text( size=18))+
+      scale_y_log10()
 
     },height = 500)
 }
