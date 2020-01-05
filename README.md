@@ -1,7 +1,6 @@
 # Power plant data set visualization in R
 
-## Project provides several plots regarding power plant data set.
-## Code written in R language with usage of shiny, ggplot2, mapproj packages.
+## Project provides several plots regarding power plant data set. Code written in R language with usage of shiny, ggplot2, mapproj packages.
 
 
 Application deployed:
